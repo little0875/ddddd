@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Phone Shop
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-button (click)="adddata()" expand="full">เพิ่มข้อมูล</ion-button>
+  <ion-card *ngFor= "let item of dataList">
+    <ion-card-content>
+      ชื่อรุ่น:{{item.mb_name}}<br>
+      ยี่ห้อ:{{item.mb_brand}}<br>
+      
+      <div ngSwitch="{{item.mb_status}}">
+          <div *ngSwitchCase="'0'">สถานะ : ไม่มีสินค้า</div>
+          <div *ngSwitchCase="'1'">สถานะ : มีสินค้า</div>
+          
+      </div>      
+      
+      <ion-button (click)="editdata()" color="success">แก้ไข </ion-button>
+      <ion-button (click)="deletedata(item.mb_name)" color="danger">ลบข้อมูล </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+
